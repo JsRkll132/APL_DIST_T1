@@ -1,0 +1,32 @@
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+    <table class="table table-bordered  mb-0">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Plato</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Kcal</th>
+          <th scope="col">Turno</th>
+          <th scope="col">*</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let r of raciones;let i=index" >
+          <ng-container *ngIf="r.disponible==true">
+          <td>{{i+1}}</td>
+         <td>{{r.plato?.nombrePlato}}</td>
+         <td>{{r.plato?.pesoPlato}} g</td>
+         <td>{{r.plato?.kcalPlato}} kcal</td>
+         <td>{{r.turno?.horaInicio + "-"+r.turno?.horaFin }}  </td>
+         <td><div class="form-check"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+          > </div></td>
+        </ng-container>
+        </tr>
+      
+      </tbody>
+    </table>
+  
+  </div>

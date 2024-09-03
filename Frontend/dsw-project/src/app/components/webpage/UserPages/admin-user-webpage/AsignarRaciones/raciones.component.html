@@ -1,0 +1,35 @@
+<!-- editar-reporte.component.html -->
+<form [formGroup]="formGroup">
+    <h2 class="mb-4">Asignacion de raciones</h2>
+    <div class="mb-3">
+      <label for="codigoAlumno" class="form-label">Raciones :</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Cantidad : </span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" formControlName="numeroRaciones">
+      </div>
+    </div>
+    
+    <label class="form-label">Menu :</label>
+    <select class="form-select" formControlName="idMenu" (change)="this.selectedMenu()" >
+      <option  *ngFor="let m of menus;let i=index" [value]= "m.idMenu">{{m.nombreMenu}} </option>
+    </select>
+
+    <label class="form-label">Platos :</label>
+    <select class="form-select" formControlName="idPlato" required >
+      <option  *ngFor="let p of this.selectMenu?.platos;let i=index" [value]= "p.idPlato">{{p?.nombrePlato}} </option>
+    </select>
+    
+    
+    <label class="form-label">Turnos :</label>
+      <select class="form-select" formControlName="idTurno" required >
+        <option  *ngFor="let t of this.selectMenu?.turnos;let i=index" [value]= "t?.idTurno">{{t?.horaInicio + "-" + t?.horaFin}} </option>
+      </select>
+      <br>
+    <div class="col-md-12">
+      <button class="btn btn-danger" type="submit" routerLink="/" >CANCELAR</button>
+      <button class="btn btn-primary" style="margin-left: 200px;" type="submit" (click)="saveRaciones()">REGISTRAR</button>
+    </div>
+  </form>
+  

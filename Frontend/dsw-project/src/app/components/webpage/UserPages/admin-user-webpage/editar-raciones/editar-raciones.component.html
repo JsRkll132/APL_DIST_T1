@@ -1,0 +1,81 @@
+
+
+<div class="col-lg-16" style="margin-bottom: 20px;">
+            
+    <button id="btlo" class="btn btn-success" routerLink="/AdminWebPage/AdminWeb"  >Regresar</button>
+</div>
+
+<div class="container" style="margin-bottom: 30px;">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Borrar raciones</h2>
+        <br>
+        <h4>Total de raciones Disponibles : {{this.conunt_total}}</h4>
+        <br>
+        <h5>Seleccione el menu :</h5>
+        <br>
+        <form [formGroup]="this.formGroup">
+        <select id="codigoAlumno" name="codigoAlumno" class="form-select" required formControlName="idMenu"  (change)="selectMenu()">
+            <option *ngFor="let m of menus;let i=index"  [value]="m.idMenu" >{{m.nombreMenu}}</option>
+        </select>
+        <h5>Seleccione el plato :</h5>
+        <br>
+        <select id="codigoAlumno" name="codigoAlumno" class="form-select" required formControlName="idPlato"  (change)="onSelectChange()">
+            <option *ngFor="let p of this.curr_menu?.platos;let i=index"  [value]="p.idPlato" >{{p.idPlato +" - "+ p.nombrePlato}}</option>
+        </select>        
+        <h5>Seleccione el turno :</h5>
+        <br>
+        <select id="codigoAlumno" name="codigoAlumno" class="form-select" required formControlName="idturno"  (change)="onSelectChange()">
+            <option *ngFor="let t of this.curr_menu?.turnos;let i=index"  [value]="t.idTurno" >{{t.horaInicio+" - " +t.horaFin}}</option>
+        </select>
+      </form>
+        <br>
+        <h4>Cupos Disponibles: {{cupos_disp}}</h4>
+        <br>
+        <button class="btn btn-danger" (click)="deletedSelectedRations()">Borrar Racion seleccionada</button>
+        <br><br>
+        <button class="btn btn-dark" (click)="this.deletedFiltertedRations()" >Borrar Raciones filtradas</button>
+      </div>
+  
+      <div class="col-md-8">
+        
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <table class="table table-bordered  mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Id</th>
+                  <th scope="col">Menu</th>
+                  <th scope="col">Plato</th>
+                  <th scope="col">Peso</th>
+                  <th scope="col">Kcal</th>
+                  <th scope="col">Turno</th>
+                  <th scope="col">*</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr *ngFor="let r of raciones;let i=index" >
+                  <ng-container *ngIf="r.disponible==true">
+                  <td>{{i+1}}</td>
+                  <td>{{r.idRacion}}</td>
+                  <td>{{r.tipoRacion}}</td>
+                 <td>{{r.plato?.nombrePlato}}</td>
+                 <td>{{r.plato?.pesoPlato}} g</td>
+                 <td>{{r.plato?.kcalPlato}} kcal</td>
+                 <td>{{r.turno?.horaInicio + "-"+r.turno?.horaFin }}  </td>
+                 <td><div class="form-check"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                  (click)="selectTurno(r?.idRacion)"> </div></td>
+                </ng-container>
+                </tr>
+              
+              </tbody>
+            </table>
+          
+          </div>
+     
+        
+      </div>
+    </div>
+  </div>

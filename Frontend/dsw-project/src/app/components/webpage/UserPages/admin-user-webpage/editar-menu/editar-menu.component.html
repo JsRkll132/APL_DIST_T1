@@ -1,0 +1,117 @@
+<div style="margin-top: 30px;margin-left:1300px">
+<button type="submit" class="btn btn-success" routerLink="/AdminWebPage/AdminWeb">Regresar</button>
+</div>
+<div style="display: flex;">
+  <!-- Contenedor izquierdo -->
+  <div style="width: 50%; margin-right: 20px;margin:50px;margin-top: 50px">
+      <form [formGroup]="this.formAddMenu">
+        <h4>Menu Añadir / Editar</h4>
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example" formControlName="idMenu" (change)="selectedMenuF()" >
+                <option *ngFor="let item of this.menuList;let i=index" [value]="item.idMenu" >{{item.nombreMenu}}</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example" formControlName="idPlato" >
+                <option *ngFor="let item of this.platosList;let i=index" [value]="item.idPlato" >{{item.nombrePlato}}</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-success" (click)="this.addMenuPlato()">Añadir Plato</button>
+            <button type="submit" class="btn btn-danger" (click)="deleteMenuPlato()" style="margin-left: 30px;">Borrar plato del menu</button>
+        </div>
+        <br>
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example" formControlName="idTurno" >
+                <option *ngFor="let item of this.turnosList;let i=index" [value]="item.idTurno" >{{item.horaInicio+" - "+item.horaFin}}</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-dark" (click)="addMenuTurno()">Añadir Turno</button>
+            <button type="submit" class="btn btn-danger" (click)="deleteMenuTurno()" style="margin-left: 30px;">Borrar turno del menu</button>
+        </div>
+          <br>
+        
+
+      </form>
+      <table class="table" style="width: 300px;text-align: center" align="center">
+          <thead>
+              <tr>
+                  <th scope="col">Platos del menú</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of this.selectedMenu?.platos">
+                  <td>{{item.nombrePlato}}</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <!-- Tabla de Turnos -->
+      <table class="table" style="width: 300px;text-align: center"  align="center">
+          <thead>
+              <tr>
+                  <th scope="col">Turnos</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of this.selectedMenu?.turnos">
+                  <td>{{item.horaInicio}} - {{item.horaFin}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <!-- Contenedor derecho -->
+  <div style="width: 50%;margin:50px;">
+      <!-- Formulario Añadir/Editar Plato -->
+      <div style="margin-bottom: 20px;">
+          <form [formGroup]="formAddPlato">
+              <h4>Añadir / Editar Plato</h4>
+              <input type="checkbox" class="custom-control-input" (change)="mostrarSelect = !mostrarSelect; formAddPlato.reset()"> 
+              <br>
+              <ng-container *ngIf="mostrarSelect">
+                  <label for="selectPlato">Platos (Editar)</label>
+                  <select id="selectPlato" class="form-select" formControlName="idPlato" (change)="selectPlato()">
+                      <option *ngFor="let item of platosList" [value]="item.idPlato">{{item.nombrePlato}}</option>
+                  </select>
+              </ng-container>
+              <div class="form-group">
+                  <label for="nombrePlato">Nombre Plato</label>
+                  <input id="nombrePlato" class="form-control" formControlName="nombrePlato">
+              </div>
+              <div class="form-group">
+                  <label for="kcalPlato">Kcal Plato</label>
+                  <input id="kcalPlato" class="form-control" formControlName="kcalPlato">
+              </div>
+              <div class="form-group">
+                  <label for="pesoPlato">Peso Plato</label>
+                  <input id="pesoPlato" class="form-control" formControlName="pesoPlato">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary" (click)="addPlato()" *ngIf="!mostrarSelect">Añadir Plato</button>
+              <button type="submit" class="btn btn-warning" (click)="editPlato()" *ngIf="mostrarSelect">Editar Plato</button>
+          </form>
+      </div>
+
+      <!-- Formulario Añadir Turno -->
+      <div>
+          <form [formGroup]="formAddTurno">
+              <h4>Añadir Turno</h4>
+              <div class="form-group">
+                  <label for="nombreTurno">Nombre Turno</label>
+                  <input id="nombreTurno" class="form-control" formControlName="nombreTurno">
+              </div>
+              <div class="form-group">
+                  <label for="horaInicio">Hora Inicio</label>
+                  <input id="horaInicio" type="time" class="form-control" formControlName="horaInicio">
+              </div>
+              <div class="form-group">
+                  <label for="horaFin">Hora Fin</label>
+                  <input id="horaFin" type="time" class="form-control" formControlName="horaFin">
+              </div>
+              <br>
+              <button type="button" class="btn btn-dark" (click)="addTurno()">Añadir Turno</button>
+          </form>
+      </div>
+  </div>
+</div>

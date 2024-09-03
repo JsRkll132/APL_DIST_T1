@@ -1,0 +1,10 @@
+form {
+    max-width:600px; /* Puedes ajustar este valor según tus preferencias */
+    margin: auto; /* Centrar el formulario */
+    margin-top: 30px;
+    
+  }
+input{
+    max-width: 200px;
+    
+}
