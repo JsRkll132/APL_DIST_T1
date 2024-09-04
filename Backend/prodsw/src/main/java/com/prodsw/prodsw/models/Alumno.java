@@ -84,7 +84,7 @@ public class Alumno {
         this.alumnoNombre2 = alumnoNombre2;
         this.alumnoApellido1 = alumnoApellido1;
         this.alumnoApellido2 = alumnoApellido2;
-        this.alumnoCorreo = alumnoNombre.toLowerCase() + "." + alumnoApellido1.toLowerCase()+"@unmsm.edu.pe";
+        this.alumnoCorreo = alumnoNombre.toLowerCase() + "." + alumnoApellido1.toLowerCase()+user.getIdUsuario()+"@unmsm.edu.pe";
         this.alumnoCorreoPersonal = alumnoCorreoPersonal;
         this.user=user;
     }
