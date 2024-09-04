@@ -13,6 +13,9 @@ export class DswproinitComponent {
 
       }
       ngOnInit(){
+      //  window.localStorage.clear()
+      //  this.userService.logout();
+        
         console.log(this.userService.currentUserLoginOn.value);
         console.log(this.userService.currentUserJwt.value);
         console.log(this.userService.currentUserRole.value);

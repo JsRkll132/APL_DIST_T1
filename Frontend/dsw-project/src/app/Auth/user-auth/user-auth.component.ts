@@ -67,6 +67,12 @@ export class UserAuthComponent {
         alert('Campos en blanco o erroneos');
         console.log('Campos invalidos...')
         this.formGroup.reset();
+        return;
       }
+    }
+    Back(){
+      this.userService.logout();
+      this.formGroup.reset();
+      window.location.href = '#!';
     }
 }

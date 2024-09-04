@@ -68,8 +68,9 @@ export class AlumnoUserWebpageComponent {
   logout():void{
     this.userService.logout();
 
-    this.route.navigateByUrl("")
+    
     window.localStorage.clear()
+    window.location.href = '#!';
    // window.location.reload()
     
   }
