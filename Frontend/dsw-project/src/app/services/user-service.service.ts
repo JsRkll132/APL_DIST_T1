@@ -35,6 +35,12 @@ export class UserServiceService {
       catchError(this.handleError)
     );
   }
+  public Register(request:any) : Observable<any>{
+    return this.httpClient.post<any>(this.targetUrl+'v2/register',request).pipe(
+      map((userData) => (userData)),
+      catchError(this.handleError)
+    );
+  }
   private handleError(error:HttpErrorResponse){
     if(error.status===0){
       console.error('Se ha producio un error ', error.error);

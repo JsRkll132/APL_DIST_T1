@@ -10,11 +10,12 @@ import { EditarMenuComponent } from './components/webpage/UserPages/admin-user-w
 import { RegistrarReservaComponent } from './components/webpage/UserPages/admin-user-webpage/registrar-reserva/registrar-reserva.component';
 import { VisualizarRacionesComponent } from './components/webpage/UserPages/admin-user-webpage/visualizar-raciones/visualizar-raciones.component';
 import { EditarRacionesComponent } from './components/webpage/UserPages/admin-user-webpage/editar-raciones/editar-raciones.component';
-
+import { RegisterComponentComponent } from './Auth/register-component/register-component.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/PanelInicial',pathMatch:'full'},
     {path:'PanelInicial',component:DswproinitComponent},
     {path:'IniciarSesion/Alumno',component:AlumnoAuthComponent},
+    {path:'Registro/Alumno',component:RegisterComponentComponent},
     {path:'IniciarSesion/Administrador',component:AdministradorAuthComponent},
     {path:'AlumnoWebPage/AlumnoWeb',component:AlumnoUserWebpageComponent},
     {path:'AdminWebPage/AdminWeb',component:AdminUserWebpageComponent},
