@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class MenuDTO {
-    String nomnbreMenu;
+    String nombreMenu;
     Long idMenu;
     Long idPlato;
     Long idTurno;

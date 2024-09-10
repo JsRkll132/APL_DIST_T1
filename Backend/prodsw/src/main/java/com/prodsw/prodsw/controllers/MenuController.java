@@ -26,7 +26,7 @@ public class MenuController {
 
     @PostMapping("/createMenu")
     public Menu createMenu(@RequestBody MenuDTO menuDTO){
-        return this.menuService.createMenu(menuDTO.getNomnbreMenu());
+        return this.menuService.createMenu(menuDTO.getNombreMenu());
     }
     @PostMapping("/AddPlatos")
     public Menu AddPlatos(@RequestBody MenuDTO menuDTO){
