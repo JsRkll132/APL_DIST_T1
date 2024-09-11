@@ -16,6 +16,8 @@ import com.prodsw.prodsw.services.ReservaService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -41,6 +43,10 @@ public class ReservaController {
     @GetMapping("/getAll")
     public List<Reserva> getAll(){
         return reservaService.getAll();
+    }
+    @GetMapping("/getReservaAlumno")
+    public List<Reserva> getAlumnoReservas(@RequestParam Long idAlumno) {
+        return reservaService.getAlumnoReservas(idAlumno);
     }
     
 }

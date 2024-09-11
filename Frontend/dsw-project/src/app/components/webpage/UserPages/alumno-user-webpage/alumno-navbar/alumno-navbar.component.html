@@ -1,0 +1,27 @@
+<!-- Define el navbar aquí para que esté presente en todas las páginas -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"  style="margin-bottom: 30px;">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/AlumnoWebPage/AlumnoWeb/inicio" routerLinkActive="active">Panel de control de alumno</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarText">
+        <!-- Centrar los items del menú -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/AlumnoWebPage/AlumnoWeb/inicio" routerLinkActive="active">Mi informacion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/AlumnoWebPage/AlumnoWeb/Reserva" routerLinkActive="active">Realizar Reseva</a>
+          </li>
+        </ul>
+
+        <!-- Botón de Cerrar Sesión tipo 'success' alineado a la derecha -->
+        <button class="btn btn-danger ml-auto" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+</nav>
+
+<!-- El contenido de la ruta específica será cargado aquí -->
+<router-outlet></router-outlet>

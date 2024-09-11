@@ -51,7 +51,7 @@ export class UserAuthComponent {
                   this.formGroup.reset();
               }
               else if(document.URL.toString() == 'http://localhost:4200/IniciarSesion/Alumno' && this.userService.userRole=="2"){
-                  this.route.navigateByUrl('/AlumnoWebPage/AlumnoWeb');
+                  this.route.navigateByUrl('/AlumnoWebPage/AlumnoWeb/inicio');
                   this.formGroup.reset();
               }else{
                 alert('Usuario no valido');

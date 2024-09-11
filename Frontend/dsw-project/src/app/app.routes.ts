@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { DswproinitComponent } from './components/webpage/dswproinit/dswproinit.component';
 import { AlumnoAuthComponent } from './Auth/alumno-auth/alumno-auth.component';
 import { AdministradorAuthComponent } from './Auth/administrador-auth/administrador-auth.component';
-import { AlumnoUserWebpageComponent } from './components/webpage/UserPages/alumno-user-webpage/alumno-user-webpage.component';
+import { AlumnoUserWebpageComponent } from './components/webpage/UserPages/alumno-user-webpage/alumno-realizar-op/alumno-user-webpage.component';
 import { AdminUserWebpageComponent } from './components/webpage/UserPages/admin-user-webpage/admin-user-webpage.component';
 import { RacionesComponent } from './components/webpage/UserPages/admin-user-webpage/AsignarRaciones/raciones.component';
 import { ConsultaRacionesComponent } from './components/webpage/UserPages/admin-user-webpage/consulta-raciones/consulta-raciones.component';
@@ -11,13 +11,19 @@ import { RegistrarReservaComponent } from './components/webpage/UserPages/admin-
 import { VisualizarRacionesComponent } from './components/webpage/UserPages/admin-user-webpage/visualizar-raciones/visualizar-raciones.component';
 import { EditarRacionesComponent } from './components/webpage/UserPages/admin-user-webpage/editar-raciones/editar-raciones.component';
 import { RegisterComponentComponent } from './Auth/register-component/register-component.component';
+import { AlumnoUserPanelComponent } from './components/webpage/UserPages/alumno-user-webpage/alumno-user-panel/alumno-user-panel.component';
+import { AlumnoNavbarComponent } from './components/webpage/UserPages/alumno-user-webpage/alumno-navbar/alumno-navbar.component';
+import { MisReservasComponent } from './components/webpage/UserPages/alumno-user-webpage/mis-reservas/mis-reservas.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/PanelInicial',pathMatch:'full'},
     {path:'PanelInicial',component:DswproinitComponent},
     {path:'IniciarSesion/Alumno',component:AlumnoAuthComponent},
     {path:'Registro/Alumno',component:RegisterComponentComponent},
     {path:'IniciarSesion/Administrador',component:AdministradorAuthComponent},
-    {path:'AlumnoWebPage/AlumnoWeb',component:AlumnoUserWebpageComponent},
+    {path:'AlumnoWebPage/AlumnoWeb/Reserva',component:AlumnoUserWebpageComponent},
+    {path:'AlumnoWebPage/AlumnoWeb/MisReservas',component:MisReservasComponent},
+    {path:'AlumnoWebPage/AlumnoWeb',component:AlumnoNavbarComponent},
+    {path:'AlumnoWebPage/AlumnoWeb/inicio',component:AlumnoUserPanelComponent},
     {path:'AdminWebPage/AdminWeb',component:AdminUserWebpageComponent},
     {path:'AdminWebPage/AdminWeb/AsignarRaciones',component:RacionesComponent},
     {path:'AdminWebPage/AdminWeb/ConsultarReservas',component:ConsultaRacionesComponent},

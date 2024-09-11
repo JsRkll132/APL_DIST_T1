@@ -68,7 +68,10 @@ public class ReservaService {
 
         return "Deleted reserva : "+todeletedReserva.getIdReserva().toString()+" ,from Alumno : "+alumno.getId().toString();
     }
-
+    public List<Reserva> getAlumnoReservas(Long idAlumno){
+        return alumnoRepository.findById(idAlumno).get().getReservas();
+        
+    }
     public List<Reserva> getAll(){
         return reservaRepository.findAll();
     }

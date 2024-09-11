@@ -1,0 +1,10 @@
+.sidebar {
+    height: 100vh;
+    position: absolute; /* Cambia esto si tienes `fixed` o `absolute` */
+    left: 50px;
+    width: 300px;
+  }
+  
+  main {
+    margin-left: 600px; /* Asegúrate de que no esté afectado por un margen */
+  }

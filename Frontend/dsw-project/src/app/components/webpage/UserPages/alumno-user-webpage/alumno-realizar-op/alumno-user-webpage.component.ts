@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { UserServiceService } from '../../../../services/user-service.service';
+import { UserServiceService } from '../../../../../services/user-service.service';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TurnoService } from '../../../../services/dbQuerys/turno.service';
-import { TurnoComponent } from '../../../../entities/turnos/turno/turno.component';
-import { RacionComponent } from '../../../../entities/Raciones/racion/racion.component';
-import { RacionService } from '../../../../services/dbQuerys/racion.service';
+import { TurnoService } from '../../../../../services/dbQuerys/turno.service';
+import { TurnoComponent } from '../../../../../entities/turnos/turno/turno.component';
+import { RacionComponent } from '../../../../../entities/Raciones/racion/racion.component';
+import { RacionService } from '../../../../../services/dbQuerys/racion.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AlumnosService } from '../../../../services/dbQuerys/alumnos.service';
-import { ReservaService } from '../../../../services/dbQuerys/reserva.service';
-import { MenuService } from '../../../../services/dbQuerys/menu.service';
-import { MenuComponent } from '../../../../entities/Menus/menu/menu.component';
+import { AlumnosService } from '../../../../../services/dbQuerys/alumnos.service';
+import { ReservaService } from '../../../../../services/dbQuerys/reserva.service';
+import { MenuService } from '../../../../../services/dbQuerys/menu.service';
+import { MenuComponent } from '../../../../../entities/Menus/menu/menu.component';
+import { AlumnoNavbarComponent } from "../alumno-navbar/alumno-navbar.component";
 
 @Component({
   selector: 'app-alumno-user-webpage',
   standalone: true,
-  imports: [RouterModule,RouterOutlet,CommonModule , FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, RouterOutlet, CommonModule, FormsModule, ReactiveFormsModule, AlumnoNavbarComponent],
   templateUrl: './alumno-user-webpage.component.html',
   styleUrl: './alumno-user-webpage.component.css'
 })

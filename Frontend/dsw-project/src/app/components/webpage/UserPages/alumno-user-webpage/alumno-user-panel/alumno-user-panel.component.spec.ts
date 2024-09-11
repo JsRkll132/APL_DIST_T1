@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MisReservasComponent } from './mis-reservas.component';
+import { AlumnoUserPanelComponent } from './alumno-user-panel.component';
 
-describe('MisReservasComponent', () => {
-  let component: MisReservasComponent;
-  let fixture: ComponentFixture<MisReservasComponent>;
+describe('AlumnoUserPanelComponent', () => {
+  let component: AlumnoUserPanelComponent;
+  let fixture: ComponentFixture<AlumnoUserPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MisReservasComponent]
+      imports: [AlumnoUserPanelComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MisReservasComponent);
+    fixture = TestBed.createComponent(AlumnoUserPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

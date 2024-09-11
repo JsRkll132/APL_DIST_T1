@@ -1,0 +1,24 @@
+<app-alumno-navbar></app-alumno-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <!-- Enlace a Mis Reservas -->
+          <a routerLink="/AlumnoWebPage/AlumnoWeb/MisReservas" class="list-group-item list-group-item-action py-2 ripple" routerLinkActive="active" aria-current="true">
+            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Mis Reservas</span>
+          </a>
+          <!-- Otros enlaces -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido principal (a la derecha del sidebar) -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Aquí se cargará el componente de Mis Reservas -->
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
