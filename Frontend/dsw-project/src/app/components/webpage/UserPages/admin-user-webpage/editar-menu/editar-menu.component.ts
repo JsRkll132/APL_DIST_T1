@@ -127,8 +127,9 @@ export class EditarMenuComponent {
         response => {
           console.log('Turno introducido :', response);
           alert('Turno agregado al menu ...');
-          this.formAddMenu.reset()
+          //this.formAddMenu.reset()
           this.loadMenus()
+          this.selectedMenuF()
         },
         error => {
           console.error('Error al crear el turno:', error);
@@ -156,7 +157,7 @@ export class EditarMenuComponent {
           alert('Turno eliminado del menu ...');
           this.formAddMenu.controls['idTurno'].setValue(null)
           this.loadMenus()
-          this.selectPlato()
+          this.selectedMenuF()
         },
         error => {
           console.error('Error al eliminar el:', error);
@@ -183,6 +184,8 @@ export class EditarMenuComponent {
             alert('Turno creado de manera exitosa...');
             this.formAddTurno.reset()
             this.loadPlatos()
+            this.loadMenus()
+            this.loadTurnos()
           },
           error => {
             console.error('Error al crear el turno:', error);
@@ -269,10 +272,18 @@ export class EditarMenuComponent {
     this.formAddPlato.controls['pesoPlato'].setValue(this.selectedPlatoEdit.pesoPlato)
   }
   selectedMenuF():void{
-    this.loadMenus()
-    const currid = this.formAddMenu.value.idMenu
-    console.log(currid)
-    this.selectedMenu = this.menuList.filter(menu => menu.idMenu == currid)[0]
+    //this.loadMenus()
+    this.menuService.getAll().subscribe(
+      data=>{
+        if (data){
+          this.menuList = data;
+          const currid = this.formAddMenu.get('idMenu')?.value
+          console.log(currid)
+          this.selectedMenu = this.menuList.filter(menu => menu.idMenu == currid)[0]
+        }
+      }
+    )
+    
   }
   loadMenus() :void {
     this.menuService.getAll().subscribe(
