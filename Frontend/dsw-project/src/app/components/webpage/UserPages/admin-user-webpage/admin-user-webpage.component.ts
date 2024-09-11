@@ -37,7 +37,7 @@ export class AdminUserWebpageComponent implements OnInit{
   logout():void{
     this.userService.logout();
     
-    this.route.navigateByUrl("")
+    window.location.href = '#!';
     window.localStorage.clear()
    // window.location.reload()
     
