@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { MenuComponent } from '../../entities/Menus/menu/menu.component';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  targeturl = "http://localhost:3331/api/v1/menus/"
+  targeturl = environment.api_url+ "api/v1/menus/"
   constructor(private httpClient:HttpClient) { }
   public createMenu(request:any) : Observable<any>{
     return this.httpClient.post<any>(this.targeturl+"createMenu",request).pipe(map(res => res ));

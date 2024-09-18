@@ -3,12 +3,12 @@ import { BehaviorSubject, catchError, map ,Observable, tap, throwError} from 'rx
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UserComponent } from '../entities/user/user.component';
 import { UserDataComponent } from '../entities/user/user-data/user-data.component';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
-  targetUrl='http://localhost:3331/auth/'
+  targetUrl=environment.api_url+'auth/'
   currentUserLoginOn : BehaviorSubject<boolean>= new BehaviorSubject<boolean>(false);
   currentUserJwt:BehaviorSubject<String> = new BehaviorSubject<String>("");
   currentUserRole:BehaviorSubject<String> = new BehaviorSubject<String>("");

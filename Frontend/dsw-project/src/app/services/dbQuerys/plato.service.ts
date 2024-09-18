@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PlatoService {
 
-  targeturl = "http://localhost:3331/api/v1/platos/"
+  targeturl = environment.api_url+ "api/v1/platos/"
   constructor(private httpClient:HttpClient) { }
   public list() : Observable<any[]>{
     return this.httpClient.get<any[]>(this.targeturl+"getAll");

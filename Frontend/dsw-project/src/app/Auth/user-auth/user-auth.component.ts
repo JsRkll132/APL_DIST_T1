@@ -46,11 +46,11 @@ export class UserAuthComponent {
               console.log(this.userService.myuserData)
               console.log(this.userService.currentUserRole)
               console.log(this.userService.userRole)
-              if (document.URL.toString() == 'http://localhost:4200/IniciarSesion/Administrador' && this.userService.userRole=="admint"){
+              if (document.URL.toString().includes("/IniciarSesion/Administrador") && this.userService.userRole=="admint"){
                   this.route.navigateByUrl('/AdminWebPage/AdminWeb');
                   this.formGroup.reset();
               }
-              else if(document.URL.toString() == 'http://localhost:4200/IniciarSesion/Alumno' && this.userService.userRole=="2"){
+              else if(document.URL.toString().includes("/IniciarSesion/Alumno") && this.userService.userRole=="2"){
                   this.route.navigateByUrl('/AlumnoWebPage/AlumnoWeb/inicio');
                   this.formGroup.reset();
               }else{

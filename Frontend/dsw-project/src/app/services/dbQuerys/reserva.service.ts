@@ -1,14 +1,14 @@
 import { HttpClient ,HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ReservaService {
 
   constructor(private httpClient:HttpClient) { }
-  targeturl = "http://localhost:3331/api/v1/reservas/"
+  targeturl =environment.api_url+  "api/v1/reservas/"
 
   public Create(request:any) : Observable<any>{
     return this.httpClient.post<any>(this.targeturl+'createReserva',request).pipe(map (res => res));
