@@ -1,0 +1,15 @@
+version: '2.29.2'
+
+services:
+    prodsw:
+      container_name: prodsw
+      image: prodsw-java-app:latest
+      build: .
+      ports: 
+        - 8080:8080
+      environment:
+        - PORT_SERVER_SPB=8080
+        - DATABASE_URL=jdbc:sqlserver://sistemcomedorunmsmg10.database.windows.net:1433;trustServerCertificate=false;databasename=sistemacomedorunmsmg10
+        - DB_USERNAME=jsrkll132adminmssql
+        - DB_PASSWORD=SqlNotExploitable666@#99
+        - OPTION_DLL=update

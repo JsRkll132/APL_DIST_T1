@@ -73,4 +73,22 @@ export class MisReservasComponent {
       console.error('El ID del alumno no está definido.');
     }
   }
+  eliminarReserva(idReserva: any,idalumno:any): void {
+    console.log(idReserva)
+  //  this.formGroupDel.controls['idReserva'].setValue(parseInt(idReserva));
+    this.reservaService.DeleteById(idalumno,idReserva).subscribe(
+        data=>{
+          try {
+            if (data){
+              console.log(data)
+              this.loadReservas()
+            }
+          } catch (e) {
+            console.log(e)
+          }
+        }
+      
+    )
+
+  }
 }

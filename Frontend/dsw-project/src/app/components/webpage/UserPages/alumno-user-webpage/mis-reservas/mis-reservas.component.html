@@ -24,7 +24,7 @@
           <td style="text-align: center; vertical-align: middle;">{{r.racion?.idRacion}}</td>
           <td style="text-align: center; vertical-align: middle;">{{r.racion?.plato?.nombrePlato}}</td>
           <td style="text-align: center; vertical-align: middle;">{{r.racion?.turno?.horaInicio +"-"+r.racion?.turno?.horaFin }}</td>
-          <td style="text-align: center; vertical-align: middle;"> <button type="button" class="btn btn-danger" style="width: 50%;" ><fa-icon [icon]="faTrash"></fa-icon></button></td>
+          <td style="text-align: center; vertical-align: middle;"> <button type="button" class="btn btn-danger" style="width: 50%;" (click)="eliminarReserva(r?.idReserva,currAlumno?.id)" ><fa-icon [icon]="faTrash"></fa-icon></button></td>
         </tr>
       
     </tbody>
