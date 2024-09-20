@@ -5,7 +5,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule,FormControl, Validators } f
 import { CommonModule } from '@angular/common';
 import { UserServiceService } from '../../services/user-service.service';
 import { UserComponent } from '../../entities/user/user.component';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-user-auth',
   standalone: true,
@@ -36,7 +36,22 @@ export class UserAuthComponent {
             }, 
             error:(errorData) =>{
               console.log(errorData);
-              alert('Usuario no encontrado...');
+
+              const alert_ = Swal.mixin({
+                customClass : {
+                    confirmButton : 'btn btn-primary'
+                },
+                buttonsStyling: false
+              }
+
+              )
+              alert_.fire({
+                icon: "error",
+                title: "No es posible acceder",
+                text: "Usuario inexistente",
+              
+              });
+       
             },
             complete:() =>{
               console.log("admin user jwt : ")
@@ -54,7 +69,21 @@ export class UserAuthComponent {
                   this.route.navigateByUrl('/AlumnoWebPage/AlumnoWeb/inicio');
                   this.formGroup.reset();
               }else{
-                alert('Usuario no valido');
+                const alert_ = Swal.mixin({
+                  customClass : {
+                      confirmButton : 'btn btn-primary'
+                  },
+                  buttonsStyling: false
+                }
+
+                )
+                alert_.fire({
+                  icon: "error",
+                  title: "No es posible acceder",
+                  text: "Usuario no valido para esta seccion",
+                
+                });
+            
                 this.userService.logout();
               }
               console.info('Operacion terminada');
@@ -64,7 +93,14 @@ export class UserAuthComponent {
           }
         )
       }else{
-        alert('Campos en blanco o erroneos');
+        Swal.fire({
+          icon: "warning",
+        
+          text: 'Campos vacios',
+          timer: 900,
+          showConfirmButton:false
+        })
+
         console.log('Campos invalidos...')
         this.formGroup.reset();
         return;

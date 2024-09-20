@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet ,RouterModule, Route, Router} from '@angular/router';
 import { UserServiceService } from '../../../services/user-service.service';
+import '@sweetalert2/theme-bootstrap-4'
 @Component({
   selector: 'app-dswproinit',
   standalone: true,
