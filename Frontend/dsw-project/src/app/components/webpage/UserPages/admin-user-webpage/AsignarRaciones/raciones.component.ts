@@ -9,6 +9,7 @@ import { RacionService } from '../../../../../services/dbQuerys/racion.service';
 import { PlatoService } from '../../../../../services/dbQuerys/plato.service';
 import { MenuService } from '../../../../../services/dbQuerys/menu.service';
 import { MenuComponent } from '../../../../../entities/Menus/menu/menu.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-raciones',
@@ -108,9 +109,38 @@ export class RacionesComponent {
         }
       );
     }
-    alert("Raciones Ingresadas")
+    //alert("Raciones Ingresadas")
+    const alert_ = Swal.mixin({
+      customClass : {
+          confirmButton : 'btn btn-primary'
+      },
+      buttonsStyling: false
+    }
+
+    )
+    alert_.fire({
+      icon: "success",
+      title: "Transaccion exitosa",
+      text: "Turno creado de manera exitosa...",
+    
+    });
+    
   }else{
-    alert("Error en llenar los campos..");
+    //alert("Error en llenar los campos..");
+    const alert_ = Swal.mixin({
+      customClass : {
+          confirmButton : 'btn btn-primary'
+      },
+      buttonsStyling: false
+    }
+
+    )
+    alert_.fire({
+      icon: "error",
+      title: "Error en la transaccion",
+      text: "Error en llenar los campos.",
+    
+    });
   }
   }
 

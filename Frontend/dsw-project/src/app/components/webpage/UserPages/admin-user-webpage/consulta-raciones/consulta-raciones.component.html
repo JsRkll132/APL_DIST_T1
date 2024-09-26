@@ -18,7 +18,7 @@
       <th style="text-align: center; vertical-align: middle;">Menu</th>
       <th style="text-align: center; vertical-align: middle;">idReserva</th>
       <th style="text-align: center; vertical-align: middle;">idRacion</th>
-      <th style="text-align: center; vertical-align: middle;">Disponiblidad</th>
+      <th style="text-align: center; vertical-align: middle;">Accion</th>
     </tr>
   </thead>
   <tbody>
@@ -32,7 +32,7 @@
         <td style="text-align: center; vertical-align: middle;">{{ r.menu?.nombreMenu }}</td>
         <td style="text-align: center; vertical-align: middle;" >{{ r?.idReserva }}</td>
         <td style="text-align: center; vertical-align: middle;">{{r.racion?.idRacion}}</td>
-        <td style="text-align: center; vertical-align: middle;"> <button type="button" class="btn btn-danger" style="width: 50%;" (click)="eliminarReserva(r.idReserva,a.id)">Eliminar reserva</button></td>
+        <td style="text-align: center; vertical-align: middle;"> <button type="button" class="btn btn-danger" (click)="eliminarReserva(r.idReserva,a.id)"> <fa-icon [icon]="faTrash"></fa-icon> </button></td>
       </tr>
     </ng-container>
   </tbody>

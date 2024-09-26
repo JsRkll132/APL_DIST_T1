@@ -9,7 +9,7 @@ import { TurnoService } from '../../../../../services/dbQuerys/turno.service';
 import { TurnoComponent } from '../../../../../entities/turnos/turno/turno.component';
 import { MenuService } from '../../../../../services/dbQuerys/menu.service';
 import { MenuComponent } from '../../../../../entities/Menus/menu/menu.component';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-editar-menu',
   standalone: true,
@@ -76,7 +76,21 @@ export class EditarMenuComponent {
       this.menuService.addPlatos(request).subscribe(
         response => {
           console.log('Plato introducido :', response);
-          alert('Plato agregado al menu ...');
+          //alert('Plato agregado al menu ...');
+          const alert_ = Swal.mixin({
+            customClass : {
+                confirmButton : 'btn btn-primary'
+            },
+            buttonsStyling: false
+          }
+
+          )
+          alert_.fire({
+            icon: "success",
+            title: "Transaccion exitosa",
+            text: "Plato agregado al menu",
+          
+          });
           this.formAddMenu.reset()
           this.loadMenus()
         },
@@ -85,33 +99,76 @@ export class EditarMenuComponent {
         },
       )
   }else{
-    alert("Campos vacios o erroneos")
+    //alert("Campos vacios o erroneos")
+    const alert_ = Swal.mixin({
+      customClass : {
+          confirmButton : 'btn btn-danger'
+      },
+      buttonsStyling: false
+    }
+
+    )
+    alert_.fire({
+      icon: "error",
+      title: "Incompleto",
+      text: "Campos vacios o erroneos",
+    
+    });
   }
   }
   deleteMenuPlato() : void{
-    if (this.formAddMenu.value.idMenu!=null && this.formAddMenu.value.idPlato!=null){
-      const request = {
-        nomnbreMenu:null,
-        idMenu: this.formAddMenu.get('idMenu')?.value,
-        idPlato: this.formAddMenu.get('idPlato')?.value,
-        idTurno:null
+
+    Swal.fire({
+      title: "Seguro que desea eliminar ?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      denyButtonText: `Cancelar Operacion`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {    if (this.formAddMenu.value.idMenu!=null && this.formAddMenu.value.idPlato!=null){
+        const request = {
+          nomnbreMenu:null,
+          idMenu: this.formAddMenu.get('idMenu')?.value,
+          idPlato: this.formAddMenu.get('idPlato')?.value,
+          idTurno:null
+        }
+        console.log(request)
+        
+        this.menuService.DeletePlatos(request).subscribe(
+          response => {
+            console.log('Plato eliminado :', response);
+            //alert('Plato eliminado menu ...');
+            Swal.fire("Plato eliminado menu ...", "", "success");
+            this.formAddMenu.reset()
+            this.loadMenus()
+          },
+          error => {
+            console.error('Error al eliminar plato del menu:', error);
+          },
+        )
+    }else{
+      const alert_ = Swal.mixin({
+        customClass : {
+            confirmButton : 'btn btn-danger'
+        },
+        buttonsStyling: false
       }
-      console.log(request)
-      
-      this.menuService.DeletePlatos(request).subscribe(
-        response => {
-          console.log('Plato eliminado :', response);
-          alert('Plato eliminado menu ...');
-          this.formAddMenu.reset()
-          this.loadMenus()
-        },
-        error => {
-          console.error('Error al eliminar plato del menu:', error);
-        },
+  
       )
-  }else{
-    alert("Campos vacios o erroneos")
-  }
+      alert_.fire({
+        icon: "error",
+        title: "Incompleto",
+        text: "Campos vacios o erroneos",
+      
+      });
+    }
+        
+      } else if (result.isDenied) {
+        Swal.fire("Operacion cancelada", "", "info");
+      }
+    });
+
   }
   addMenuTurno() : void{
     if (this.formAddMenu.value.idMenu!=null && this.formAddMenu.value.idTurno!=null){
@@ -126,18 +183,60 @@ export class EditarMenuComponent {
       this.menuService.addTurnos(request).subscribe(
         response => {
           console.log('Turno introducido :', response);
-          alert('Turno agregado al menu ...');
+          //alert('Turno agregado al menu ...');
+          const alert_ = Swal.mixin({
+            customClass : {
+                confirmButton : 'btn btn-primary'
+            },
+            buttonsStyling: false
+          }
+
+          )
+          alert_.fire({
+            icon: "success",
+            title: "Transaccion exitosa",
+            text: "Turno agregado al menu ...",
+          
+          });
           //this.formAddMenu.reset()
           this.loadMenus()
           this.selectedMenuF()
         },
         error => {
           console.error('Error al crear el turno:', error);
-          alert('El turno puede ya encontrarse dentro del menu...')
+          //alert('El turno puede ya encontrarse dentro del menu...')
+          const alert_ = Swal.mixin({
+            customClass : {
+                confirmButton : 'btn btn-danger'
+            },
+            buttonsStyling: false
+          }
+      
+          )
+          alert_.fire({
+            icon: "error",
+            title: "Error en la transaccion",
+            text: "El turno puede ya encontrarse dentro del menu...",
+          
+          });
         },
       )
   }else{
-    alert("Campos vacios o erroneos")
+    //alert("Campos vacios o erroneos")
+    const alert_ = Swal.mixin({
+      customClass : {
+          confirmButton : 'btn btn-danger'
+      },
+      buttonsStyling: false
+    }
+
+    )
+    alert_.fire({
+      icon: "error",
+      title: "Incompleto",
+      text: "Campos vacios o erroneos",
+    
+    });
   }    
   }
 
@@ -154,18 +253,56 @@ export class EditarMenuComponent {
       this.menuService.DeleteTurnos(request).subscribe(
         response => {
           console.log('Turno eliminado :', response);
-          alert('Turno eliminado del menu ...');
+          //alert('Turno eliminado del menu ...');
+          Swal.mixin({
+            customClass : {
+                confirmButton : 'btn btn-primary'
+            },
+            buttonsStyling: false
+          }
+      
+          ).fire("'Turno eliminado del menu ...'");
+
           this.formAddMenu.controls['idTurno'].setValue(null)
           this.loadMenus()
           this.selectedMenuF()
         },
         error => {
           console.error('Error al eliminar el:', error);
-          alert('El turno puede no encontrarse dentro del menu...')
+          //alert('El turno puede no encontrarse dentro del menu...')
+          const alert_ = Swal.mixin({
+            customClass : {
+                confirmButton : 'btn btn-danger'
+            },
+            buttonsStyling: false
+          }
+      
+          )
+          alert_.fire({
+            icon: "error",
+            title: "Error en la transaccion",
+            text: "El turno puede no encontrarse asociado al menu",
+          
+          });
+          
         },
       )
   }else{
-    alert("Campos vacios o erroneos")
+    //alert("Campos vacios o erroneos")
+    const alert_ = Swal.mixin({
+      customClass : {
+          confirmButton : 'btn btn-danger'
+      },
+      buttonsStyling: false
+    }
+
+    )
+    alert_.fire({
+      icon: "error",
+      title: "Incompleto",
+      text: "Campos vacios o erroneos",
+    
+    });
   }    
   }
 
@@ -181,7 +318,21 @@ export class EditarMenuComponent {
         this.turnoService.create(request).subscribe(
           response => {
             console.log('Turno creado:', response);
-            alert('Turno creado de manera exitosa...');
+            //alert('Turno creado de manera exitosa...');
+            const alert_ = Swal.mixin({
+              customClass : {
+                  confirmButton : 'btn btn-primary'
+              },
+              buttonsStyling: false
+            }
+  
+            )
+            alert_.fire({
+              icon: "success",
+              title: "Transaccion exitosa",
+              text: "Turno creado de manera exitosa...",
+            
+            });
             this.formAddTurno.reset()
             this.loadPlatos()
             this.loadMenus()
@@ -192,7 +343,21 @@ export class EditarMenuComponent {
           },
         )
     }else{
-      alert("Campos vacios o erroneos")
+      //alert("Campos vacios o erroneos")
+      const alert_ = Swal.mixin({
+        customClass : {
+            confirmButton : 'btn btn-danger'
+        },
+        buttonsStyling: false
+      }
+  
+      )
+      alert_.fire({
+        icon: "error",
+        title: "Incompleto",
+        text: "Campos vacios o erroneos",
+      
+      });
     }
   }
   addPlato():void{
@@ -206,7 +371,21 @@ export class EditarMenuComponent {
         this.platoService.create(request).subscribe(
           response => {
             console.log('Menu creado:', response);
-            alert('Plato creado de manera exitosa...');
+            //alert('Plato creado de manera exitosa...');
+            const alert_ = Swal.mixin({
+              customClass : {
+                  confirmButton : 'btn btn-primary'
+              },
+              buttonsStyling: false
+            }
+  
+            )
+            alert_.fire({
+              icon: "success",
+              title: "Transaccion exitosa",
+              text: "Plato creado de manera exitosa...",
+            
+            });
             this.formAddPlato.reset()
             this.loadPlatos()
             
@@ -216,7 +395,21 @@ export class EditarMenuComponent {
           },
         )
     }else{
-      alert("Campos vacios o erroneos")
+      //alert("Campos vacios o erroneos")
+      const alert_ = Swal.mixin({
+        customClass : {
+            confirmButton : 'btn btn-danger'
+        },
+        buttonsStyling: false
+      }
+  
+      )
+      alert_.fire({
+        icon: "error",
+        title: "Incompleto",
+        text: "Campos vacios o erroneos",
+      
+      });
     }
   }
   editPlato():void{
@@ -230,7 +423,21 @@ export class EditarMenuComponent {
         this.platoService.update(request).subscribe(
           response => {
             console.log('Plato editado...:', response);
-            alert('Plato editado de manera exitosa...');
+            //alert('Plato editado de manera exitosa...');
+            const alert_ = Swal.mixin({
+              customClass : {
+                  confirmButton : 'btn btn-primary'
+              },
+              buttonsStyling: false
+            }
+  
+            )
+            alert_.fire({
+              icon: "success",
+              title: "Transaccion exitosa",
+              text: "Plato editado de manera exitosa...",
+            
+            });
             this.formAddPlato.reset()
             this.loadPlatos()
           },
@@ -239,7 +446,21 @@ export class EditarMenuComponent {
           },
         )
     }else{
-      alert("Campos vacios o erroneos")
+      //alert("Campos vacios o erroneos")
+      const alert_ = Swal.mixin({
+        customClass : {
+            confirmButton : 'btn btn-danger'
+        },
+        buttonsStyling: false
+      }
+  
+      )
+      alert_.fire({
+        icon: "error",
+        title: "Incompleto",
+        text: "Campos vacios o erroneos",
+      
+      });
     }
   }
   loadPlatos(): void{

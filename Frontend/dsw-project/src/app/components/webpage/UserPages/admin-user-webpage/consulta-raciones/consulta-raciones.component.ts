@@ -6,15 +6,17 @@ import { AlumnosService } from '../../../../../services/dbQuerys/alumnos.service
 import { AlumnoComponent } from '../../../../../entities/Alumnos/alumno/alumno.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReservaService } from '../../../../../services/dbQuerys/reserva.service';
-
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-consulta-raciones',
   standalone: true,
-  imports: [RouterOutlet,RouterModule,CommonModule ,FormsModule, ReactiveFormsModule],
+  imports: [FontAwesomeModule,RouterOutlet,RouterModule,CommonModule ,FormsModule, ReactiveFormsModule],
   templateUrl: './consulta-raciones.component.html',
   styleUrl: './consulta-raciones.component.css'
 })
 export class ConsultaRacionesComponent {
+  faTrash = faTrash;
   userLoginOn:boolean=false;
   constructor(private userService:UserServiceService,private route:Router,private alumnoService:AlumnosService,private reservaService:ReservaService) { }
   ListaAlumnos?:AlumnoComponent[]

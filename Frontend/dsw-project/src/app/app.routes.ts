@@ -17,9 +17,16 @@ import { MisReservasComponent } from './components/webpage/UserPages/alumno-user
 export const routes: Routes = [
     {path:'',redirectTo:'/PanelInicial',pathMatch:'full'},
     {path:'PanelInicial',component:DswproinitComponent},
-    {path:'IniciarSesion/Alumno',component:AlumnoAuthComponent},
+    {path:'IniciarSesion'
+        ,component:AlumnoAuthComponent,
+        children : [
+            { path: 'Alumno', title: 'Alumno inicio', component: AlumnoAuthComponent },
+            { path: 'Administrador', title: 'Admin inicio', component:AdministradorAuthComponent },
+            // Add more child routes as needed
+        ]
+    },
     {path:'Registro/Alumno',component:RegisterComponentComponent},
-    {path:'IniciarSesion/Administrador',component:AdministradorAuthComponent},
+
     {path:'AlumnoWebPage/AlumnoWeb/Reserva',component:AlumnoUserWebpageComponent},
     {path:'AlumnoWebPage/AlumnoWeb/MisReservas',component:MisReservasComponent},
     {path:'AlumnoWebPage/AlumnoWeb',component:AlumnoNavbarComponent},
