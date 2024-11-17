@@ -1,0 +1,40 @@
+<div class="chatbot-container" [class.hidden]="!isOpen">
+    <div class="chatbot-header">
+      <h3>Chatbot</h3>
+      <div *ngIf="isOpen">
+      <button class="close-btn" (click)="toggleChat()">
+      </button></div>
+    </div>
+  
+    <div class="chatbot-body" *ngIf="isOpen">
+      <div class="box">
+        <div *ngFor="let message of messages">
+          <!-- Mensaje del usuario -->
+          <div *ngIf="message.sender === 'user'" class="person-a">
+            <div class="icon"></div>
+            <div class="message">{{ message.text }}</div>
+          </div>
+          <!-- Mensaje del bot -->
+          <div *ngIf="message.sender === 'bot'" class="person-b">
+            <div class="message">{{ message.text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="chatbot-footer" *ngIf="isOpen">
+      <input
+        type="text"
+        [(ngModel)]="userMessage"
+        (keyup.enter)="sendMessage()"
+        placeholder="Escribe tu mensaje..."
+      />
+      <button class="send-btn" (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+  
+  <div class="chatbot-toggle" (click)="toggleChat()" *ngIf="!isOpen">
+    <button class="opench-btn" ></button>
+  </div>
+  
+  <router-outlet></router-outlet>

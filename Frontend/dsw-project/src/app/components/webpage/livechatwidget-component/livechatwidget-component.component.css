@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-btn {
+    padding: 10px 10px;
+    background-color: #ff4747;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+  }
+  
+  .box {
+    padding: 1em;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  
+  .person-a,
+  .person-b {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    max-width: 100%;
+    width: auto;
+    word-wrap: break-word;
+    padding: 10px;
+    border-radius: 15px;
+    line-height: 1.4;
+  }
+  
+  .person-a {
+    justify-content: flex-end;
+  }
+  
+  .person-a .message {
+    background: #f0f0f0;
+    color: #333;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: left;
+    border-radius: 15px 15px 0 15px;
+    max-width: 70%;
+  }
+  
+  .person-b .message {
+    background: #cce5ff;
+    color: #333;
+    text-align: left;
+    border-radius: 15px 15px 15px 0;
+    max-width: 70%;
+  }
+  
+  .person-b {
+    justify-content: flex-start;
+  }
+  
+  .chatbot-footer {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .chatbot-footer input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .send-btn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .opench-btn {
+    padding: 10px 10px;
+    background-color: #77f75a;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+  }
+  
