@@ -4,8 +4,10 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY package*.json /app
 RUN npm install
-COPY . /app 
-RUN npm run build
+COPY . /app
+ENV API_URL=${API_URL_}
+ENV API_KEY=${API_KEY_}
+RUN npm run build:staging
 #second step
 FROM nginx:1.26-alpine
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
