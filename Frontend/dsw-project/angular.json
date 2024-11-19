@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "customWebpackConfig": {
-              "path": "./customWebpackConfig.js"
+              "path": "./webpack.config.js"
             },
             "outputPath": "dist/dsw-project",
             "index": "src/index.html",
