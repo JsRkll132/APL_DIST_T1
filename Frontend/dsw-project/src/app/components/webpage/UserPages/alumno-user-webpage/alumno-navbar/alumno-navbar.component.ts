@@ -9,10 +9,13 @@ import { AlumnoUserPanelComponent } from '../alumno-user-panel/alumno-user-panel
 import { AlumnoUserWebpageComponent } from '../alumno-realizar-op/alumno-user-webpage.component';
 import { LivechatwidgetComponentComponent } from '../../../livechatwidget-component/livechatwidget-component.component';
 import { LiveChatWidgetModule } from '@livechat/widget-angular';
+import { GenaiServiceService } from '../../../../../services/GenAi/genai-service.service';
+import { GenerativeModel } from '@google/generative-ai';
 @Component({
   selector: 'app-alumno-navbar',
   standalone: true,
   imports: [RouterModule, RouterOutlet, CommonModule, FormsModule, ReactiveFormsModule, AlumnoNavbarComponent, LivechatwidgetComponentComponent],
+  providers : [GenaiServiceService],
   templateUrl: './alumno-navbar.component.html',
   styleUrl: './alumno-navbar.component.css'
 })

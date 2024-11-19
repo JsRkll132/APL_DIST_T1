@@ -1,34 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EventHandlerPayload } from '@livechat/widget-angular'
-import { LiveChatWidgetComponent } from '@livechat/widget-angular';
-import { NgModel } from '@angular/forms';
+
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { GenaiServiceService } from '../../../services/GenAi/genai-service.service';
 //import { LivechatComponentComponent } from "../livechat-component/livechat-component.component";
 //import { OnInit } from '@angular/core';
 //declare const initChatWidget : any
 @Component({
   selector: 'app-livechatwidget-component',
   standalone: true,
-  imports: [FormsModule,RouterOutlet, CommonModule, RouterModule, ],
+  imports: [FormsModule,RouterOutlet, CommonModule, RouterModule,],
+  providers : [GenaiServiceService],
   templateUrl: './livechatwidget-component.component.html',
   styleUrl: './livechatwidget-component.component.css'
 })
 export class LivechatwidgetComponentComponent {
+  
+
+  constructor(private genaiServiceService : GenaiServiceService) {
+    //this.genaiServiceService = Inject(GenaiServiceService)
+  }
+  ngOnInit() : void{
+    this.genaiServiceService = new GenaiServiceService()
+  }
   isOpen = false;
   userMessage = '';
   messages: { sender: string, text: string }[] = [
     { sender: 'bot', text: '¡Hola! ¿En qué puedo ayudarte?' },
   ];
 
-  toggleChat() {
+  async toggleChat() {
     this.isOpen = !this.isOpen;
   }
 
-  sendMessage() {
+  async sendMessage()  {
     // Verificar si el mensaje está vacío
     if (this.userMessage.trim() === '') {
       return;
@@ -41,13 +48,14 @@ export class LivechatwidgetComponentComponent {
     this.userMessage = '';
 
     // Llamar a la función para procesar la respuesta automática del bot
-    this.autoReply();
+    await this.autoReply();
   }
 
-  autoReply() {
+  async autoReply(): Promise<void> {
     // Respuesta automática después de 1 segundo
-    setTimeout(() => {
-      const botReply = 'Esta es una respuesta automática. Gracias por tu mensaje.sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss';
+    setTimeout(async () => {
+      console.log(this.messages[this.messages.length-1].text)
+      const botReply = await this.genaiServiceService.MakePromptInText(this.messages[this.messages.length-1].text.toString());
       this.messages.push({ sender: 'bot', text: botReply });
     }, 1000);
   }
