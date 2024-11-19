@@ -11,11 +11,8 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            },
             "outputPath": "dist/dsw-project",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -23,7 +20,7 @@
               "zone.js"
             ],
             "allowedCommonJsDependencies": [
-              "sweetalert2","fs"
+              "sweetalert2","fs","@google/generative-ai"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [

@@ -4,8 +4,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY package*.json /app
 RUN npm install
-RUN npm install browserify-fs 
-RUN npm i @angular-builders/custom-webpack 
+
 COPY . /app
 ARG API_URL_
 ARG API_KEY_
