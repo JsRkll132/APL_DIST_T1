@@ -5,8 +5,13 @@ WORKDIR /app
 COPY package*.json /app
 RUN npm install
 COPY . /app
-ENV API_URL=${API_URL_}
-ENV API_KEY=${API_KEY_}
+ARG API_URL_
+ARG API_KEY_
+
+# Reemplaza las variables en el archivo environment.staging.ts
+RUN sed -i "s|\$ENV.API_URL|${API_URL_}|g" src/environments/environment.staging.ts
+RUN sed -i "s|\$ENV.API_KEY|${API_KEY_}|g" src/environments/environment.staging.ts
+
 RUN npm run build:staging
 #second step
 FROM nginx:1.26-alpine

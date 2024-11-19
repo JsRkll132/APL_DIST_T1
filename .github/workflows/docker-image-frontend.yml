@@ -24,4 +24,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - uses: actions/checkout@v4
       - name: Build the Docker image
-        run: docker build ./Frontend/dsw-project --file ./Frontend/dsw-project/Dockerfile --tag ${{ secrets.DOCKER_FRONTEND_IMAGE }}:$(date +%s)
+        run: docker build \
+            --build-arg API_URL_=${{ secrets.API_URL_S }} \
+            --build-arg API_KEY_=${{ secrets.API_KEY_S }} \
+            -f ./Frontend/dsw-project/Dockerfile \
+            -t ${{ secrets.DOCKER_FRONTEND_IMAGE }}:$(date +%s) \
+            ./Frontend/dsw-project
