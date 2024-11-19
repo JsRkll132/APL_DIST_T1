@@ -11,7 +11,7 @@ ARG API_KEY_
 # Reemplaza las variables en el archivo environment.staging.ts
 RUN sed -i "s|\$ENV.API_URL|${API_URL_}|g" /app/src/environments/environment.staging.ts
 RUN sed -i "s|\$ENV.API_KEY|${API_KEY_}|g" /app/src/environments/environment.staging.ts
-
+RUN cat /app/src/environments/environment.staging.ts
 RUN npm run build:staging
 #second step
 FROM nginx:1.26-alpine
