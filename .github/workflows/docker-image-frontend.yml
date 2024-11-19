@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
       - name : Set Secrets
         run : |
             export API_URL_=${{ secrets.API_URL_S }}
