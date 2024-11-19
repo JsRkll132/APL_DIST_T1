@@ -17,7 +17,7 @@ export class GenaiServiceService {
   private cache : any;
   private chat : any;
   constructor() { 
-    this.api_key = environment.api_url;
+    this.api_key = environment.gemini_api;
     this.modeli = new GoogleGenerativeAI( this.api_key.toString() )
     this.cacheManager = new GoogleAICacheManager(this.api_key.toString());
     const systemInstruction =
