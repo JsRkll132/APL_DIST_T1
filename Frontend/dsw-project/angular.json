@@ -20,7 +20,7 @@
               "zone.js"
             ],
             "allowedCommonJsDependencies": [
-              "sweetalert2"
+              "sweetalert2","fs"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
