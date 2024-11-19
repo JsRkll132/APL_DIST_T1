@@ -1,4 +1,4 @@
-FROM node:20.11.1-alpine3.19 AS builder
+FROM node:23.2-alpine3.20 AS builder
 RUN rm -rf /app
 RUN mkdir -p /app
 WORKDIR /app
